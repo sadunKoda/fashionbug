@@ -12,11 +12,19 @@ jobs:
     name: playwright automation tests
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env:
-      BASE_URL: ${{ vars.BASE_URL }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+      - name: Write .env for CI
+        run: |
+          DEFAULT_URL='https://opensource-demo.orangehrmlive.com'
+          EFFECTIVE_URL="${BASE_URL:-$DEFAULT_URL}"
+          if [ -z "${BASE_URL}" ]; then
+            echo "::notice::BASE_URL Actions variable unset; using public OrangeHRM demo. Set repository variable BASE_URL to override."
+          fi
+          printf 'BASE_URL=%s\n' "${EFFECTIVE_URL}" > .env
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:

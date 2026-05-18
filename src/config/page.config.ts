@@ -6,11 +6,11 @@ import {
   type Page,
 } from '@playwright/test';
 import * as dotenv from 'dotenv';
-import { DashboardPage, LoginPage } from '@config/page-loader';
+import * as path from 'path';
+import { LoginPage, DashboardPage } from '@config/page-loader';
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
-/** Same gate as Ordino §5.2 — Ordino Connector sets these for MCP test runs. */
 const useOrdinoCdp =
   process.env.ORDINO_PLAYWRIGHT_USE_CDP === '1' &&
   Boolean(String(process.env.ORDINO_CDP_URL || '').trim());
@@ -72,4 +72,4 @@ const test = baseTest.extend<MyFixtures>({
   },
 });
 
-export { expect, test };
+export { test, expect };

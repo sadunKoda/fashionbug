@@ -1,5 +1,5 @@
 {
-  "_comment": "Expected UI copy for login assertions.",
+  "_comment": "Expected UI text for login assertions.",
   "errors": {
     "invalidCredentials": "Invalid credentials",
     "requiredField": "Required"

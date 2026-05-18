@@ -1,17 +1,17 @@
-import { Locator, Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class HeaderPanel {
   private profileBadge: Locator;
   private profileName: Locator;
 
   constructor(private page: Page) {
-    this.profileBadge = page.locator('//li[contains(@class,"oxd-userdropdown")]');
-    this.profileName = page.locator('//p[contains(@class,"oxd-userdropdown-name")]');
+    this.profileBadge = page.locator("//li[contains(@class,'oxd-userdropdown')]");
+    this.profileName = page.locator("//p[contains(@class,'oxd-userdropdown-name')]");
   }
 
   /**
-   * Reads the visible user name from the header profile chip.
-   * @returns Trimmed profile label text
+   * Returns the visible profile-name text from the header.
+   * @returns Trimmed profile-name string
    */
   async getProfileName(): Promise<string> {
     await this.profileName.waitFor({ state: 'visible' });
@@ -19,7 +19,7 @@ export class HeaderPanel {
   }
 
   /**
-   * Opens the user profile dropdown in the top bar.
+   * Opens the profile dropdown menu in the header.
    * @returns this for chaining
    */
   async openProfileMenu(): Promise<this> {
