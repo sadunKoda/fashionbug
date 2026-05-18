@@ -1,0 +1,13 @@
+{
+  "_comment": "Expected copy and widget titles on the OrangeHRM dashboard.",
+  "labels": {
+    "pageTitle": "OrangeHRM",
+    "dashboardTitle": "Dashboard"
+  },
+  "widgets": {
+    "timeAtWork": "Time at Work",
+    "myActions": "My Actions",
+    "quickLaunch": "Quick Launch",
+    "employeeDistributionSubUnit": "Employee Distribution by Sub Unit"
+  }
+}
